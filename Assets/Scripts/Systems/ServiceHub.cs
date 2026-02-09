@@ -14,7 +14,8 @@ public class ServiceHub : MonoBehaviour
     // The static instance that makes this globally accessible
     public static ServiceHub Instance { get; private set; }
 
-
+    public GameStateManager gameStateManager;
+    public UIManager uiManager;
 
 
 
