@@ -12,14 +12,19 @@ public enum GameState
 
 public class GameStateManager : MonoBehaviour
 {
+
+    [SerializeField] UIManager UIManager;
     public GameState currentState { get; private set; }
     public GameState previousState { get; private set; }
 
     [SerializeField] private string currentActiveState;
     [SerializeField] private string previousActiveState;
 
+
+
     private void Start()
     {
+        UIManager = ServiceHub.Instance.uiManager;
         SetState(GameState.Init);
     }
 
@@ -50,17 +55,17 @@ public class GameStateManager : MonoBehaviour
 
             case GameState.MainMenu:
                 Debug.Log("GameState Changed to MainMenu");
-                //Turn on Main Menu UI
+                UIManager.ShowMainMenuUI();
                 break;
 
             case GameState.Gameplay:
                 Debug.Log("GameState Changed to GamePlay");
-                //Turn off All UI
-                //Turn on Gameplay UI
+                UIManager.ShowGameplayUI();
                 break;
 
             case GameState.Paused:
                 Debug.Log("GameState Changed to Paused");
+                UIManager.ShowPausedUI();
                 break;
 
             default:
